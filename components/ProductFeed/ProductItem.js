@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/solid';
-import Currency from 'react-currency-formatter';
 
 const ProductItem = ({
   id,
@@ -39,9 +38,7 @@ const ProductItem = ({
 
       <p className='text-xs my-2 line-clamp-2'>{description}</p>
 
-      <div className='mb-5'>
-        <Currency quantity={price} />
-      </div>
+      <div className='mb-5'>${price}</div>
 
       {hasPrime && (
         <div className='flex items-center space-x-2 -mt-5'>
