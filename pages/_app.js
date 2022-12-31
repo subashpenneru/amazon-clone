@@ -1,12 +1,25 @@
 import { Provider } from 'react-redux';
+import { SessionProvider } from 'next-auth/react';
 
 import { store } from '../store';
 import '../styles/globals.css';
+import Header from '../components/Header';
+import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
+    <>
+      <Head>
+        <title>Amazon Clone</title>
+      </Head>
+      <SessionProvider session={pageProps.session}>
+        <Provider store={store}>
+          <div className='bg-gray-100'>
+            <Header />
+            <Component {...pageProps} />
+          </div>
+        </Provider>
+      </SessionProvider>
+    </>
   );
 }
