@@ -1,10 +1,10 @@
 import { Provider } from 'react-redux';
 import { SessionProvider } from 'next-auth/react';
+import Head from 'next/head';
 
 import { store } from '../store';
 import '../styles/globals.css';
 import Header from '../components/Header';
-import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
   return (
