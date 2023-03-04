@@ -41,7 +41,19 @@ const CheckoutProduct = ({
   // };
 
   const qtyChangeHandler = (event) => {
-    console.log(event, event.target);
+    dispatch(
+      addToBasket({
+        id,
+        title,
+        price,
+        rating,
+        description,
+        category,
+        image,
+        hasPrime,
+        qty: Number(event.target.value) || 1,
+      })
+    );
   };
 
   const removeItemHandler = () => {
