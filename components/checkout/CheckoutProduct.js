@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import { StarIcon, PlusIcon, MinusIcon } from '@heroicons/react/solid';
-import { useState } from 'react';
+import { StarIcon } from '@heroicons/react/solid';
 import { useDispatch } from 'react-redux';
 
 import { addToBasket, removeFromBasket } from '../../store/slices/basketSlice';
@@ -15,30 +14,34 @@ const CheckoutProduct = ({
   image,
   hasPrime,
 }) => {
-  const [qty, setQty] = useState(1);
+  // const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
 
-  const plusClickHandler = () => {
-    setQty((prev) => prev + 1);
-    dispatch(
-      addToBasket({
-        id,
-        title,
-        price,
-        rating,
-        description,
-        category,
-        image,
-        hasPrime,
-        qty: qty + 1,
-      })
-    );
-  };
+  // const plusClickHandler = () => {
+  //   setQty((prev) => prev + 1);
+  //   dispatch(
+  //     addToBasket({
+  //       id,
+  //       title,
+  //       price,
+  //       rating,
+  //       description,
+  //       category,
+  //       image,
+  //       hasPrime,
+  //       qty: qty + 1,
+  //     })
+  //   );
+  // };
 
-  const minusClickHandler = () => {
-    setQty((prev) => prev - 1);
-    dispatch(removeFromBasket({ id, qty: 1 }));
+  // const minusClickHandler = () => {
+  //   setQty((prev) => prev - 1);
+  //   dispatch(removeFromBasket({ id, qty: 1 }));
+  // };
+
+  const qtyChangeHandler = (event) => {
+    console.log(event, event.target);
   };
 
   const removeItemHandler = () => {
@@ -80,7 +83,7 @@ const CheckoutProduct = ({
       </div>
 
       <div className='flex items-center space-x-2'>
-        <span
+        {/* <span
           id='qty-minus'
           className='text-center border border-gray-500 p-1 cursor-pointer rounded-sm shadow-lg font-bold'
           onClick={minusClickHandler}>
@@ -96,8 +99,8 @@ const CheckoutProduct = ({
           className='text-center border border-gray-500 p-1 cursor-pointer rounded-sm shadow-lg font-bold'
           onClick={plusClickHandler}>
           <PlusIcon className='h-4' />
-        </span>
-        {/* <select name='qty' id='qty' className='p-2' onChange={qtyChangeHandler}>
+        </span> */}
+        <select name='qty' id='qty' className='p-2' onChange={qtyChangeHandler}>
           {Array(10)
             .fill()
             .map((_, i) => (
@@ -105,7 +108,7 @@ const CheckoutProduct = ({
                 {i + 1}
               </option>
             ))}
-        </select> */}
+        </select>
         <button className='button' onClick={removeItemHandler}>
           Remove From Basket
         </button>
